@@ -1,11 +1,9 @@
 //***************************************************************
-// CSC205: 33640
+// CSC205: 33640 / online
 // Minilab: 1
-// Author: Jose Solis Salazar
+// Author: Jose Solis & 35558159
 // Description: csc205 review, user inputs non zero int and a series of doubles to compare against non zero int to answer four questions
 //***************************************************************
-
-//notes: complete, just add error handling for non int/double inputs and run test cases
 
 import java.util.Scanner;
 
@@ -13,27 +11,11 @@ public class Minilab_1
 {
 	public static void main (String [] args)
 	{
+		//Intro prompt
+		System.out.println("This program will receive a first (non-zero) integer and then a series of\n(non-negative) doubles.   It will count how many doubles\nare received, count how many doubles are greater than half of the first integer,\ncount how many doubles are multiples of the first integer,\nand count how many doubles are within 5 of the first integer.");
+		System.out.println("");
 		//lab constant
 		final int FIVE = 5;
-
-		//Get nonzero int from user
-		System.out.println("Please enter a non-zero integer");
-		Scanner userInputInt = new Scanner(System.in);
-
-		int userNonZeroInt = 0; //This is our nonzero int input
-		double halfInt = 0;
-
-		while(userInputInt.hasNextInt()){
-			//*************test for non int inputs and handle errors****************
-			userNonZeroInt = userInputInt.nextInt();
-			if(userNonZeroInt != 0){
-				halfInt = userNonZeroInt / 2;
-				break;
-			}
-			else{
-				System.out.println("Number cannot be zero; please reenter");
-			}
-		}
 
 		//initialize variables that will answer lab questions
 		int numberOfDoubles = 0;
@@ -41,41 +23,73 @@ public class Minilab_1
 		int numberOfMultiples = 0;
 		int numberWithinFive = 0;
 
-		int lowerLimit = userNonZeroInt - FIVE;
-		int upperLimit = userNonZeroInt + FIVE;//consider using absoulute value to condense code
+		//Get nonzero int from user
+		System.out.println("Please enter a non-zero integer");
+		Scanner userInput = new Scanner(System.in);
+
+		int nonzeroInt = 0; //This is our nonzero int input
+		double halfInt = 0; //used to answer q2
+		double lowerLimit = 0; //used for within FIVE question
+		double upperLimit = 0;
+
+		while(userInput.hasNext()){
+			if(userInput.hasNextInt()){
+				nonzeroInt = userInput.nextInt();
+				if(nonzeroInt != 0){
+					halfInt = (double) nonzeroInt / 2;
+					lowerLimit = nonzeroInt - FIVE;
+					upperLimit = nonzeroInt + FIVE;
+					break;
+				}
+				else{
+					System.out.println("Number cannot be zero; please reenter");
+				}
+			}
+			else{
+				//continue loop if current token is not nonzero int
+				userInput.next();
+			}
+		}
 		
 		//Get doubles to analyze from user
+		System.out.println("");
 		System.out.println("Please enter doubles to analyze (negative to stop)");
-		Scanner userInputDouble = new Scanner(System.in);
 
 		double userDouble = 0;
 
-		while(userInputDouble.hasNextDouble()){
-			//*************test for non int inputs and handle errors****************
-			userDouble = userInputDouble.nextDouble();
-			if(userDouble < 0){
-				break;
+		while(userInput.hasNext()){
+			if(userInput.hasNextDouble()){
+				userDouble = userInput.nextDouble();
+				if(userDouble < 0){
+					//negative exists this loop
+					break;
+				}
+				else{
+					numberOfDoubles++;
+					if(userDouble > halfInt){
+						numberGreaterThanHalf++;
+					}
+					if((double) userDouble % nonzeroInt == 0){
+						numberOfMultiples++;
+					}
+					if(lowerLimit <= userDouble && userDouble <= upperLimit){
+						numberWithinFive++;
+					}
+				}
 			}
 			else{
-				numberOfDoubles++;
-				if(userDouble > halfInt){
-					numberGreaterThanHalf++;
-				}
-				if(userDouble % userNonZeroInt == 0){
-					numberOfMultiples++;
-				}
-				if(lowerLimit <= userDouble && userDouble <= upperLimit){
-					numberWithinFive++;
-				}
+				//continue loop if current token is a not double (filters for char)
+				userInput.next();
 			}
 		}
 
+		//Answer the questions
+		System.out.println("");
 		System.out.println("How many doubles were analyzed? " + numberOfDoubles);
-		System.out.println("How many are greater than half of " + userNonZeroInt + "? " + numberGreaterThanHalf);
-		System.out.println("How many are multiples of " + userNonZeroInt + "? " + numberOfMultiples);
-		System.out.println("How many are within 5 of " + userNonZeroInt + "? " + numberWithinFive);
+		System.out.println("How many are greater than half of " + nonzeroInt + "? " + numberGreaterThanHalf);
+		System.out.println("How many are multiples of " + nonzeroInt + "? " + numberOfMultiples);
+		System.out.println("How many are within 5 of " + nonzeroInt + "? " + numberWithinFive);
 
-		userInputInt.close();
-		userInputDouble.close();
+		userInput.close();
 	}
 }
