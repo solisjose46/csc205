@@ -31,7 +31,7 @@ public class Box extends Rectangle
 
 	//-------- methods
 	//toString - returns its representation as a String, including width then height
-	//                (the this.getClass().getName() will evaluate to "Rectangle" here
+	//                (the this.getClass().getName() will evaluate to "Box" here
 	public String toString()
 	{
 		return this.getClass().getName() + ": " + width + "x" + height + "x" + depth;

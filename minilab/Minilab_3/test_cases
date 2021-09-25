@@ -1,0 +1,22 @@
+#!/bin/bash
+
+declare -a testcases=("2 5 1" "2 7 6" "8 7 1" "-1 2 3" "3 2 -2")
+
+echo -ne "Compiling test.java ....\n"
+
+
+if javac test.java; then
+	echo -ne "Compile successful\n"
+
+	for i in "${testcases[@]}"
+	do
+		echo -ne "\nRunning test case\t$i:\n"
+		echo -ne "----------------------------\n"
+		echo -ne "$i" | java test
+	done
+		
+
+else
+	echo -ne "\nCompile failed!\n"
+fi
+
