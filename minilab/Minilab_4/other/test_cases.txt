@@ -1,0 +1,24 @@
+Tech
+----------
+7
+Bill Gates, 1, 123456
+Bill Gates, 5, 123456
+Bill Gates, 3, 123456
+Bill Gates, 3, 123455
+Bill Gates, 3, 123457
+Tekkie0, 0, 1234
+Tekkie4, 6, 5678
+
+Processor
+----------
+3
+Mark Zuckerberg, 5, 777777, 1000.0
+Pro-1, -1, 33333, 1500.5
+Pro5, 7, 44444, 1000.25
+
+Specialist
+----------
+3
+Elon Musk, 4, 999999, 3000.0, 500.0
+Spec0, 0, 1, 1.5, 2.3
+Spec4, 6, 5, 1.5, 2.7

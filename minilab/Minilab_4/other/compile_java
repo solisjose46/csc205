@@ -1,0 +1,17 @@
+#!/bin/bash
+
+declare -a javas=("Worker.java" "Processor.java" "Specialist.java" "Tech.java" "test.java")
+
+
+for i in "${javas[@]}"
+do
+	if javac -Xlint:deprecation $i; then
+		echo -ne "$i compiled successfully!\n"
+	else
+		echo -ne "$i --- compile failed !!! ---"
+	fi
+done
+
+java test
+
+rm *.class
