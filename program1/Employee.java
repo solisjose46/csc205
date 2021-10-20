@@ -24,6 +24,6 @@ abstract class Employee
 	public void getPaid(){
 		this.cash+=this.salary;
 	}
-	public void abstract giveRaise(double raise);
+	public abstract void giveRaise(double raise);
 }
 

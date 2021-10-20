@@ -11,14 +11,14 @@ class SoftwareEngineer extends Employee
 	//String name, double salary, double cash
 	
 	//constructor
-	SoftwareEngineer(String name, double Salary){
+	SoftwareEngineer(String name, double salary){
 		this.name = name;
 		this.salary = salary;
 		this.cash = 0;
 	}
 	
 	//implemented methods -- inherited
-	//getName(), getSalary, getCash()
+	//getName(), getSalary(), getCash()
 	//getPaid()
 
 	//abstract methods -- to implement

@@ -7,8 +7,8 @@
 
 interface Hourly
 {
-	public int getHoursWorked();
-	public void setHoursWorked(int hours);
+	public int getHours();
+	public void setHours(int hours);
 	public void giveRaise(double raise);
 }
 

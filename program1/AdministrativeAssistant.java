@@ -13,7 +13,9 @@ class AdministrativeAssistant extends Employee implements Hourly
 	
 	//constructor
 	AdministrativeAssistant(String name, double salary, int hours){
-		this.super(name, salary);
+		this.name = name;
+		this.salary = salary;
+		this.cash = 0;
 		this.hours = hours;
 	}
 	
@@ -31,6 +33,7 @@ class AdministrativeAssistant extends Employee implements Hourly
 		this.cash = (this.salary * this.hours);
 	}
 
+	//implements form Hourly
 	public int getHours(){
 		return this.hours;
 	}
