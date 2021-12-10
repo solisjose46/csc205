@@ -14,10 +14,10 @@ public class CreditcardAccount extends BankAccount{
 	}
 	@Override
 	public boolean debit(int amount){
-		if(this.balance + amount > this.creditLimit){
+		if(Math.abs(this.balance - amount) > this.creditLimit){
 			return false;
 		}
-		this.balance+= amount;
+		this.balance-=amount;
 		return true;
 	}
 	@Override
@@ -28,12 +28,15 @@ public class CreditcardAccount extends BankAccount{
 	}
 	@Override
 	public String getAccountInfo(){
+		double calcBal = ((double) this.balance)/100;
+		double calcCredit = ((double) this.creditLimit)/100;
+		
 		String accountInfo =
 			"Account type\t: Creditcard\n" +
-			"Account #\t: " + this.accountNumber +
-			"Balance\t: $" + String.format("%.2f",((double)(this.balance/100))) +
-			"Interest rate\t: " + (this.interestRate*100) + "%" +
-			"Credit limit\t: " + String.format("%.2f",((double)(this.creditLimit/100)));
+			"Account #\t: " + this.accountNumber + "\n" + 
+			"Balance\t: $" + String.format("%.2f",calcBal) + "\n" +
+			"Interest rate\t: " + String.format("%.2f",(this.interestRate*100)) + "%\n" +
+			"Credit limit\t: $" + String.format("%.2f",calcCredit);
 		return accountInfo;
 	}
 	public int getCreditLimit(){

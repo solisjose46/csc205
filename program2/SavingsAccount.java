@@ -23,11 +23,14 @@ public class SavingsAccount extends BankAccount{
 	}
 	@Override
 	public String getAccountInfo(){
+		double calcBal = ((double) this.balance)/100;
+
+		System.out.println("BALANCE: " + calcBal);
 		String accountInfo =
 			"Account type\t: Savings\n" +
-			"Account #\t: " + this.accountNumber +
-			"Balance\t: $" + String.format("%.2f",((double)(this.balance/100))) +
-			"Interest rate\t: " + (this.interestRate*100) + "%";
+			"Account #\t: " + this.accountNumber + "\n" +
+			"Balance\t: $" + String.format("%.2f", calcBal) + "\n" +
+			"Interest rate\t: " + String.format("%.2f", (this.interestRate*100)) + "%";
 		return accountInfo;
 	}
 

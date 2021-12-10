@@ -28,12 +28,15 @@ public class CheckingAccount extends BankAccount{
 	}
 	@Override
 	public String getAccountInfo(){
+		double calcBal = ((double) this.balance)/100;
+		double calcFee = ((double)this.overdraftFee)/100;
+
 		String accountInfo =
 			"Account type\t: Checking\n" +
-			"Account #\t: " + this.accountNumber +
-			"Balance\t: $" + String.format("%.2f",((double)(this.balance/100))) +
-			"Interest rate\t: " + (this.interestRate*100) + "%" +
-			"Overdraft fee\t: " + String.format("%.2f",((double)(this.overdraftFee/100)));
+			"Account #\t: " + this.accountNumber + "\n" + 
+			"Balance\t: $" + String.format("%.2f",calcBal) + "\n" +
+			"Interest rate\t: " + String.format("%.2f",(this.interestRate*100)) + "%\n" +
+			"Overdraft fee\t: $" + String.format("%.2f",calcFee);
 		return accountInfo;
 	}
 	public int getOverdraftFee(){

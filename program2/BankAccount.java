@@ -12,7 +12,7 @@ public abstract class BankAccount{
 
 	BankAccount(){
 		this.accountNumber = "0000-0000-0000-0000";
-		this.interestRate = 0; // 2% 
+		this.interestRate = 0;
 		this.balance = 0;
 	}
 	public boolean credit(int amount){
